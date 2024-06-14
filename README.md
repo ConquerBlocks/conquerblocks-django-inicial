@@ -9,4 +9,5 @@
     <li><a target="_blank" href="./01_clases/DJ-I Clase 01 - ¿Qué es Django y qué nos aporta?/DJ-I Clase 01 - Introdcucción a Django.pdf">DJ-I Clase 01 - Introdcucción a Django</a></li>
     <li><a target="_blank" href="./01_clases/DJ-I Clase 02 - Estructura del Framework/DJ-I Clase 02 - Estructura del Framework.pdf">DJ-I Clase 02 - Estructura del Framework</a></li>
     <li><a target="_blank" href="./01_clases/DJ-I Clase 03 Entornos virtuales en WSL y Mac Pip y requirements/DJ-I Clase 03 Entornos virtuales en WSL y Mac Pip y requirements.pdf">DJ-I Clase 03 - Entornos virtuales en WSL y Mac Pip y requirements</a></li>
+    <li><a target="_blank" href="./01_clases/DJ-I Clase 04 Nuestro primer proyecto Conquer Manager/DJ-I Clase 04 Nuestro primer proyecto Conquer Manager.pdf">DJ-I Clase 04 Nuestro primer proyecto Conquer Manager</a></li>
 </ul>
