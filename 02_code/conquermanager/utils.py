@@ -67,9 +67,9 @@ for person in person_18:
 
 
 
-# Clase 08
+# Clase 08 Crear datos
 
-from myapp.models import Family, Person
+from todos.models import Family, Person
 import random
 
 # Crear 5 familias
@@ -85,26 +85,24 @@ last_names = ['García', 'Martínez', 'Rodríguez', 'López', 'Sánchez', 'Gonz�
               'Romero', 'Vargas', 'Jiménez', 'Flores', 'Ruiz', 'Ortiz', 'Morales', 'Castro', 'Delgado', 'Ramos']
 
 for i in range(20):
-    first_name = first_names[i % len(first_names)]
-    last_name = last_names[i % len(last_names)]
-    age = random.randint(18, 90)
-    dni = f'{random.randint(10000000, 99999999)}{random.choice("ABCDEFGHIJKLMNOPQRSTUVWXYZ")}'
+  first_name = first_names[i % len(first_names)]
+  last_name = last_names[i % len(last_names)]
+  age = random.randint(12, 50)
+  dni = f'{random.randint(10000000, 99999999)}{random.choice("ABCDEFGHIJKLMNOPQRSTUVWXYZ")}'
 
-    person = Person.objects.create(
-        first_name=first_name,
-        last_name=last_name,
-        age=age,
-        dni=dni
-    )
+  person = Person.objects.create(
+    first_name=first_name,
+    last_name=last_name,
+    age=age,
+    dni=dni,
+    family=random.choice(Family.objects.all())
+  )
 
-    # Asignar la persona a una familia aleatoria
-    person.family.add(random.choice(families))
-    person.save()
 
 
 # avg, sum ...
 from django.db.models import Count, Avg, Sum, Min, Max
-from myapp.models import Person, Family  # Ajusta 'myapp' según el nombre de tu aplicación
+from todos.models import Person, Family 
 
 # Contar el número total de personas
 total_persons = Person.objects.count()
@@ -223,7 +221,7 @@ for person in adult_persons:
 
 # Q con OR
 from django.db.models import Q
-from myapp.models import Person
+from todos.models import Person
 
 # Filtrar personas que se llamen 'Juan' o que sean mayores de 18 años
 results_or = Person.objects.filter(
@@ -249,7 +247,7 @@ for person in results_and:
 
 # Ejemplo combinando Q Objects con AND y OR: Finalmente, si quieres hacer una consulta más compleja que involucre tanto AND como OR, por ejemplo, encontrar todas las personas que se llamen ‘Juan’ y que sean mayores de 18 años, o que tengan un apellido específico.
 from django.db.models import Q
-from myapp.models import Person
+from todos.models import Person
 
 # Filtrar personas que se llamen 'Juan' y sean mayores de 18 años, o que tengan el apellido 'García'
 complex_query = Person.objects.filter(
@@ -320,8 +318,7 @@ class Person(models.Model):
 
 
 # Ejemplo de select related
-from myapp.models import Person  # Ajusta 'myapp' según el nombre de tu aplicación
-
+from todos.models import Person  
 # Consultar personas y sus familias usando select_related
 persons_with_families = Person.objects.select_related('family').all()
 
