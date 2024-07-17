@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autores</title>
+</head>
+<body>
+  <h1>{{ titulo }}</h1>
+  <ul>
+    <li><a href="{% url 'home' %}">Inicio</a></li>
+    <li><a href="{% url 'books:autor_list' %}">Autores</a></li>
+    <li><a href="{% url 'books:libros_list' %}">Libros</a></li>
+    <li><a href="{% url 'books:editorial_list' %}">Editoriales</a></li>
+    <li><a href="{% url 'contacto' %}">Contacto</a></li>
+  </ul>
+
+  <h2>Lista de Autores</h2>
+  <ul>
+    {% for autor in autores %}
+      <li><a href="{% url 'books:autor_detail' autor.id %}">{{ autor.nombre }}</a></li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
