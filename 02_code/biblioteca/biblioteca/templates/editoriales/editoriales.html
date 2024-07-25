@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Editoriales</title>
-</head>
-<body>
-  <h1>Esto es la página de Editoriales</h1>
-  <ul>
-    <li><a href="{% url 'home' %}">Inicio</a></li>
-    <li><a href="{% url 'books:autor_list' %}">Autores</a></li>
-    <li><a href="{% url 'books:libros_list' %}">Libros</a></li>
-    <li><a href="{% url 'books:editorial_list' %}">Editoriales</a></li>
-    <li><a href="{% url 'contacto' %}">Contacto</a></li>
-  </ul>
-</body>
-</html>
+{% extends "general/layout.html" %}
+
+{% block head_title %}Página de Editoriales{% endblock %}
+{% block page_title %}Editoriales{% endblock %}
+
+{% block page_content %}
+  <h2>Lista completa de Editoriales</h2>
+
+{% endblock %}
+
+
