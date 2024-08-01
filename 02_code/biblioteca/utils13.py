@@ -2,8 +2,10 @@
 
 from django.shortcuts import render
 
+
 def home_view(request):
-    return render(request, 'home.html')
+    return render(request, "home.html")
+
 
 # Conectemos nuestra vista
 
@@ -25,15 +27,15 @@ TEMPLATES_DIR = BASE_DIR / "biblioteca" / "templates"
 
 # Definamos datos a mano
 autores = [
-  {"nombre": "Antonio"},
-  {"nombre": "Juan"},
+    {"nombre": "Antonio"},
+    {"nombre": "Juan"},
 ]
 
 context = {
-  "autores": autores,
+    "autores": autores,
 }
 
-return render(request, 'autores.html', context)
+return render(request, "autores.html", context)
 
 # Pasemos datos al template
 
@@ -43,11 +45,13 @@ return render(request, 'autores.html', context)
 # Partes de una url string, vista y nombre
 # Qué recibe una vista
 
+
 def home_view(request, *args, **kwargs):
     print(args)
     print(kwargs)
     print(request)
-    return render(request, 'home.html')
+    return render(request, "home.html")
+
 
 # Qué trae el request request.__dict__
 

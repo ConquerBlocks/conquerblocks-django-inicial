@@ -21,9 +21,7 @@ from django.http import HttpResponse
 
 
 def helloworld(request):
-    return HttpResponse('Hola esto es una prueba')
+    return HttpResponse("Hola esto es una prueba")
 
-urlpatterns = [
-    path("admin/", admin.site.urls),
-    path('saludo/', helloworld)
-]
+
+urlpatterns = [path("admin/", admin.site.urls), path("saludo/", helloworld)]

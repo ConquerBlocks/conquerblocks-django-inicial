@@ -23,7 +23,7 @@ from .views import home_view, contact_view
 
 urlpatterns = [
     path("", home_view, name="home"),
-    path("", include('books.urls', namespace="books")),
+    path("", include("books.urls", namespace="books")),
     path("contacta-con-nosotros/", contact_view, name="contacto"),
     path("admin/", admin.site.urls),
 ] + debug_toolbar_urls()

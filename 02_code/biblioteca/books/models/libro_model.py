@@ -2,6 +2,7 @@ from django.db import models
 from .autor_model import Autor
 from .editorial_model import Editorial
 
+
 # Modelo para Libros
 class Libro(models.Model):
     titulo = models.CharField(max_length=300)
@@ -14,11 +15,7 @@ class Libro(models.Model):
         "EN": "Inglés",
     }
 
-    idioma = models.CharField(
-        max_length=2,
-        choices=LANGS_CHOICES,
-        default='ES'
-    )
+    idioma = models.CharField(max_length=2, choices=LANGS_CHOICES, default="ES")
     descripcion = models.TextField()
     editorial = models.ForeignKey(Editorial, on_delete=models.CASCADE)
     autores = models.ManyToManyField(Autor)
