@@ -3,5 +3,14 @@
 {% block head_title %}Detalle de noticia{% endblock %}
 
 {% block page_content %}
-  <h1>Detalle de noticia</h1>
+
+    <article id="{{ post.pk }}">
+      <h1>{{ post.title }}</h1>
+      <p>Fecha de publicación: {{ post.created_at }}</p>
+      <div>
+        {{ post.content }}
+      </div>
+      <p><a href="{% url 'blog:blog_list' %}">Volver a las noticias</a></p>
+    </article>
+
 {% endblock %}

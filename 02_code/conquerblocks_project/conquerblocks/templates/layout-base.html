@@ -6,11 +6,13 @@
   <title>{% block head_title %}Título base{% endblock %}</title>
 </head>
 <body>
-  {% include '_includes/_menu_principal.html' %}
+
+  {% include '_includes/_header.html' %}
 
   {% block page_content %}
     
   {% endblock %}
 
+  {% include '_includes/_footer.html' %}
 </body>
 </html>

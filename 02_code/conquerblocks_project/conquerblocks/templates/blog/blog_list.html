@@ -3,5 +3,17 @@
 {% block head_title %}Blog{% endblock %}
 
 {% block page_content %}
-  <h1>Blog</h1>
+  <h1>Descubre las últimas noticias de desarollo web</h1>
+  
+  {% for post in posts %}
+    <article id="{{ post.pk }}">
+      <h2>{{ post.title }}</h2>
+      <p>Fecha de publicación: {{ post.created_at }}</p>
+      <div>
+        {{ post.content|truncatechars:100 }}...
+      </div>
+      <p><a href="{% url 'blog:blog_detail' post.pk %}">Ver noticia completa</a></p>
+    </article>
+  {% endfor %}
+  
 {% endblock %}
