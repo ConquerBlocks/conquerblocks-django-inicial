@@ -3,5 +3,16 @@
 {% block head_title %}Cursos{% endblock %}
 
 {% block page_content %}
-  <h1>Cursos</h1>
+  <h1>Listado de los cursos disponibles</h1>
+  
+  {% for course in courses %}
+    <article id="{{ course.pk }}">
+      <h2>{{ course.title }}</h2>
+      <p>Fecha de creación: {{ course.created_at }}</p>
+      <div>
+        {{ course.content|truncatechars:100 }}...
+      </div>
+      <p><a href="{% url 'courses:course_detail' course.pk %}">Ver curso completo</a></p>
+    </article>
+  {% endfor %}
 {% endblock %}

@@ -1,7 +1,20 @@
 {% extends "layout-base.html" %}
 
-{% block head_title %}Detalle de curso{% endblock %}
+{% block head_title %}Curso {{ course.title }}{% endblock %}
 
 {% block page_content %}
-  <h1>Detalle de curso</h1>
+
+    <article id="{{ course.pk }}">
+      <h1>Título del curso: {{ course.title }}</h1>
+      <p>Fecha de publicación: {{ course.created_at }}</p>
+      <div>
+        {{ course.content }}
+      </div>
+      {% if course.toc %}
+        <p><a href="{{ course.toc.url }}" download>Descarga el temario</a></p>
+      {% endif %}
+      <p><a href="{{ course.call_link }}">Agenda tu llamada</a></p>
+      <p><a href="{% url 'courses:course_list' %}">Volver al listado de cursos</a></p>
+    </article>
+  
 {% endblock %}
