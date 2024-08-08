@@ -8,6 +8,11 @@
   {% for course in courses %}
     <article id="{{ course.pk }}">
       <h2>{{ course.title }}</h2>
+      {% if course.course_image %}
+        <picture>
+          <img src="{{ course.course_image.thumbnails.small.url }}" alt="">
+        </picture>
+      {% endif %}
       <p>Fecha de creación: {{ course.created_at }}</p>
       <div>
         {{ course.content|truncatechars:100 }}...

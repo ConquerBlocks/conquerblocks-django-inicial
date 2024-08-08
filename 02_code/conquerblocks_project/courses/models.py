@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils import timezone
+from thumbnails.fields import ImageField
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 class Course(models.Model):
@@ -7,7 +9,7 @@ class Course(models.Model):
         verbose_name='Título del curso',
         max_length=200
     )
-    content = models.TextField(
+    content = RichTextField(
         verbose_name='Contenido del curso',
     )
     call_link = models.URLField(
@@ -24,6 +26,12 @@ class Course(models.Model):
     toc = models.FileField(
         verbose_name="Temario",
         upload_to="courses/toc/",
+        null=True,
+        blank=True
+    )
+    course_image = ImageField(
+        verbose_name="Portada del curso",
+        upload_to="courses/images/",
         null=True,
         blank=True
     )
