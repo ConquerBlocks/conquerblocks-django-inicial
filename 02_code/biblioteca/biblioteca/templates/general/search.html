@@ -1,0 +1,63 @@
+{% extends "general/layout.html" %}
+
+{% block head_title %}Página Búsqueda{% endblock %}
+{% block page_title %}Bienvenido a nuestra página de búsqueda{% endblock %}
+
+{% block page_content %}
+  <p>Este es el contenido de la página de Búsqueda</p>
+  {% comment %} <div>
+    <form action="" method="get">
+      <h2>Busca Autores, Libros y Editoriales</h2>
+      <div>
+        <label for="">Introduce cualquier cadena de texto</label>
+        <input type="text" name="q" required value="{% if request.GET %}{{ request.GET.q }}{% endif %}">
+        <button>Buscar</button>
+      </div>
+    </form>
+  </div> {% endcomment %}
+
+  <div>
+    <form action="" method="get">
+      {{ formulario.as_p }}
+      <button>Enviar</button>
+    </form>
+  </div>
+
+  {% if request.GET %}
+    <div>
+      <h3>Resultados para la búsqueda con {{ request.GET.q }}</h3>
+      <h4>Autores</h4>
+      {% if autores %}
+        <ul>
+          {% for autor in autores %}
+            <li>{{ autor }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+      <p>No hay autores para esa búsqueda</p>
+      {% endif %}
+      
+      <h4>Editoriales</h4>
+      {% if editoriales %}
+        <ul>
+          {% for editorial in editoriales %}
+            <li>{{ editorial }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+      <p>No hay editoriales para esa búsqueda</p>
+      {% endif %}
+
+      <h4>Libros</h4>
+      {% if libros %}
+      <ul>
+        {% for libro in libros %}
+          <li>{{ libro }}</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>No hay libros para esa búsqueda</p>
+      {% endif %}
+    </div>
+  {% endif %}
+{% endblock %}
