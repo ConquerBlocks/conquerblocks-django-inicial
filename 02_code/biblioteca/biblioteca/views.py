@@ -75,7 +75,7 @@ def contact_view(request):
             comentario = formulario.cleaned_data['comentario']
             print(f'Se ha enviado un correo a {nombre} procedente de email {email} con el texto {comentario}')
             context = {
-              'formulario' : formulario,
+              'form' : formulario,
               'success' : True
             }
             return render(request, "general/contacto.html", context)

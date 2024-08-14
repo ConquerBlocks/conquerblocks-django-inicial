@@ -4,6 +4,16 @@
   <li><a href="{% url 'courses:course_list' %}">Cursos</a></li>
   <li><a href="{% url 'blog:blog_list' %}">Blog</a></li>
   <li><a href="{% url 'core:register' %}">Registro</a></li>
-  <li><a href="{% url 'core:login' %}">Login</a></li>
   <li><a href="{% url 'core:contact' %}">Contacto</a></li>
+  {% if request.user.is_authenticated %}
+    <li><a href="{% url 'core:logout' %}">Cerrar sesión</a></li>
+  {% endif %}
 </ul>
+
+<section class="user">
+  {% if request.user.is_authenticated %}
+    <p>Estás logueado como: {{ request.user }}</p>
+  {% else %}
+    <p><a href="{% url 'core:login' %}">Login</a></p>
+  {% endif %}
+</section>

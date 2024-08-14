@@ -4,4 +4,13 @@
 
 {% block page_content %}
   <h1>Login</h1>
+
+  {% if error_message %}
+    <p style="color: red;">{{ error_message }}</p>
+  {% endif %}
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>Enviar</button>
+  </form>
 {% endblock %}

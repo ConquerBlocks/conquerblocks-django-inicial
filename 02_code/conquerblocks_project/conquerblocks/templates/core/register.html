@@ -4,4 +4,16 @@
 
 {% block page_content %}
   <h1>Registro</h1>
+  {% if form  %}
+    {% if error_message %}
+      <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+    <form action="" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button>Enviar</button>
+    </form>
+  {% else %}
+    <p>{{ msj }}</p>
+  {% endif %}
 {% endblock %}

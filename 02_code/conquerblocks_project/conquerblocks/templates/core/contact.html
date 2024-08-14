@@ -4,4 +4,13 @@
 
 {% block page_content %}
   <h1>Contacto</h1>
+  {% if success %}
+    <p>Se ha enviado el formulario correctamente</p>
+  {% else %}
+    <form action="" method="POST">
+    {% csrf_token %} 
+    {{ form.as_p }}
+    <button>Enviar</button>
+  </form>
+  {% endif %}
 {% endblock %}
