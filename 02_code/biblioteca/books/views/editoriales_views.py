@@ -1,8 +1,32 @@
+from typing import Any
 from django.shortcuts import render
 from books.forms import EditorialCreate, EditorialModelFormCreate
 from books.models import Editorial
 from django.shortcuts import redirect
 from django.urls import reverse
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+
+
+class EditorialList(ListView):
+    model = Editorial
+    template_name = "editoriales/editoriales_ccbv.html"
+    context_object_name = 'editoriales'
+
+
+class EditorialDetail(DetailView):
+    model = Editorial
+    template_name = "editoriales/editorial_detail_ccbv.html"
+    context_object_name = 'editorial'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Este es mi título'
+        return context
+
+
+
+
 
 def editoriales_view(request):
     

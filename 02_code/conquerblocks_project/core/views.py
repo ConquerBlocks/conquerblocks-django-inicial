@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse
 # Create your views here.
 from django.shortcuts import render
+from django.views.generic.edit import FormView
 
 from courses.models import Course
 from blog.models import Post
@@ -12,6 +13,10 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
+
+from django.http import HttpResponse
+from django.views import View
+from django.views.generic.base import TemplateView
 
 
 # Vistas generales de la aplicación
@@ -139,3 +144,44 @@ def contact(request):
       'form' : formulario
     }
     return render(request, "core/contact.html", context)
+
+
+class ContactView(FormView):
+    template_name = "core/contact.html"
+    form_class = ContactForm
+    success_url = "/"
+
+    def form_valid(self, form):
+        nombre = form.cleaned_data['nombre']
+        email = form.cleaned_data['email']
+        comentario = form.cleaned_data['comentario']
+
+        message_content = f'{nombre} con email {email} ha escrito lo siguiente: {comentario}'
+
+        Contact.objects.create(
+            nombre=nombre,
+            email=email,
+            comentario=comentario
+        )
+
+        success = send_mail(
+            "Formulario de contacto de mi Web",
+            message_content,
+            "info@laveladaconquer.com",
+            ["bienvenidosaez@gmail.com"],
+            fail_silently=False,
+        )
+
+        return super().form_valid(form)
+
+class Prueba(View):
+    def get(self, request, *args, **kwargs):
+        return HttpResponse("Hello, World!")
+
+class PruebaTemplateView(TemplateView):
+    template_name = "PruebaTemplateView.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Este es mi título'
+        return context
