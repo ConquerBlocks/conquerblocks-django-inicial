@@ -1,0 +1,17 @@
+{% extends "general/layout.html" %}
+
+{% block head_title %}Página de Editoriales{% endblock %}
+{% block page_title %}Nueva editorial{% endblock %}
+
+{% block page_content %}
+  <h2>Editar editorial</h2>
+    <form action="" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button>Modificar Editorial</button>
+      <a href="{% url 'editorial:detail' object.pk %}">Cancelar</a>
+    </form>
+
+{% endblock %}
+
+

@@ -1,0 +1,16 @@
+{% extends "general/layout.html" %}
+
+{% block head_title %}Página de Editoriales{% endblock %}
+{% block page_title %}Nueva editorial{% endblock %}
+
+{% block page_content %}
+  <h2>¿Eliminar editorial {{ object.nombre }}?</h2>
+    <form action="" method="post">
+      {% csrf_token %}
+      {{ form }}
+      <button>Eliminar Editorial</button>
+    </form>
+
+{% endblock %}
+
+

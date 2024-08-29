@@ -4,7 +4,17 @@
 {% block page_title %}Libros{% endblock %}
 
 {% block page_content %}
+  <h2>Menú</h2>
+  <ul>
+    <li><a href="{% url 'books:libro_create' %}">Nuevo libro</a></li>
+  </ul>
   <h2>Lista completa de Libros</h2>
+
+  <ul>
+  {% for libro in libros %}
+    <li><a href="">{{ libro.titulo }}</a></li>
+  {% endfor %}
+  </ul>
 
 {% endblock %}
 

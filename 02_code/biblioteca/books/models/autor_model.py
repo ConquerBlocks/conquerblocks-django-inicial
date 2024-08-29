@@ -9,9 +9,9 @@ class Autor(models.Model):
     nacionalidad = models.CharField(max_length=100)
     biografia = models.TextField()
     email = models.EmailField()
-    telefono = models.CharField(max_length=20)
-    sitio_web = models.URLField()
-    premios = models.TextField()
+    telefono = models.CharField(max_length=20, blank=True, null=True)
+    sitio_web = models.URLField(blank=True, null=True)
+    premios = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.nombre} {self.apellido}"
