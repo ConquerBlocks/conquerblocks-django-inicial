@@ -9,6 +9,10 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+
+from books.decorators import user_can_delete_editorial
 
 class EditorialListView(ListView):
     model = Editorial
@@ -22,6 +26,7 @@ class EditorialDetailView(DetailView):
     context_object_name = 'editorial'
 
 
+@method_decorator(login_required, name="dispatch")
 class EditorialCreateView(CreateView):
     model = Editorial
     template_name = "editoriales/EditorialCreate.html"
@@ -34,7 +39,7 @@ class EditorialCreateView(CreateView):
         form.instance.created_by = self.request.user
         return super().form_valid(form)
 
-
+@method_decorator(user_can_delete_editorial, name="dispatch")
 class EditorialUpdateView(UpdateView):
     model = Editorial
     template_name = "editoriales/EditorialUpdate.html"
@@ -43,7 +48,7 @@ class EditorialUpdateView(UpdateView):
         'nombre', 'direccion', 'ciudad', 'estado', 'pais', 'codigo_postal','telefono', 'email', 'sitio_web', 'fecha_fundacion'
     ]
 
-
+@method_decorator(user_can_delete_editorial, name="dispatch")
 class EditorialDeleteView(DeleteView):
     model = Editorial
     template_name = "editoriales/EditorialDelete.html"
