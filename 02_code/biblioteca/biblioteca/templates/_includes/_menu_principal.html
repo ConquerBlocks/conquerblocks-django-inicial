@@ -5,4 +5,8 @@
     <li><a href="{% url 'editorial:list' %}">Editoriales</a></li>
     <li><a href="{% url 'search' %}">Buscar</a></li>
     <li><a href="{% url 'contacto' %}">Contacto</a></li>
+
+    {% if request.user.is_authenticated %}
+      <li>Usuario logueado: {{ request.user.email }}</li>
+    {% endif %}
   </ul>

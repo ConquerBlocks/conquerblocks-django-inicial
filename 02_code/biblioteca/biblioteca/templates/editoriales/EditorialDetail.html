@@ -9,7 +9,8 @@
     <p>Dirección: {{ editorial.direccion }}</p>
     <p>Email: {{ editorial.email }}</p>
 
-    <p><a href="{% url 'editorial:update' editorial.pk %}">Editar</a> - <a href="{% url 'editorial:delete' editorial.pk %}">Eliminar</a></p>
+    <p><a href="{% url 'editorial:update' editorial.pk %}">Editar</a>
+      {% if editorial.created_by == request.user %} - <a href="{% url 'editorial:delete' editorial.pk %}">Eliminar</a> {% endif %}</p>
 
     <p><a href="{% url 'editorial:list' %}">Volver a la lista de editoriales</a></p>
 {% endblock %}

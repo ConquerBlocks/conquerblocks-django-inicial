@@ -30,6 +30,10 @@ class EditorialCreateView(CreateView):
         'nombre', 'direccion', 'ciudad', 'estado', 'pais', 'codigo_postal','telefono', 'email', 'sitio_web', 'fecha_fundacion'
     ]
 
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
+
 
 class EditorialUpdateView(UpdateView):
     model = Editorial
