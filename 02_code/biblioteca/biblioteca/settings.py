@@ -52,6 +52,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "books.custom_middleware.TiempoDeProcesamientoMiddleware"
 ]
 
 ROOT_URLCONF = "biblioteca.urls"
