@@ -123,8 +123,8 @@ def contact(request):
             success = send_mail(
                 "Formulario de contacto de mi Web",
                 message_content,
-                "info@laveladaconquer.com",
-                ["bienvenidosaez@gmail.com"],
+                "bienvenidosaez@gmail.com",
+                ["bienvenido.saez@conquerx.com"],
                 fail_silently=False,
             )
 

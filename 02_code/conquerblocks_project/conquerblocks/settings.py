@@ -186,10 +186,11 @@ CKEDITOR_CONFIGS = {
 # Configuración de correo
 # Mail is sent using the SMTP host and port specified in the EMAIL_HOST and EMAIL_PORT settings. The EMAIL_HOST_USER and EMAIL_HOST_PASSWORD settings, if set, are used to authenticate to the SMTP server, and the EMAIL_USE_TLS and EMAIL_USE_SSL settings control whether a secure connection is used.
 
-EMAIL_HOST='smtp.dondominio.com'
-EMAIL_HOST_USER='info@laveladaconquer.com'
-EMAIL_HOST_PASSWORD='Usuario123.'
-EMAIL_USE_TLS=True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'bienvenidosaez@gmail.com'  # Reemplaza con tu dirección de correo
+EMAIL_HOST_PASSWORD = 'gacv rysb qvpk vcus'    # Reemplaza con tu contraseña de correo
 
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/'  # La vista a la que se redirige después de un login exitoso
