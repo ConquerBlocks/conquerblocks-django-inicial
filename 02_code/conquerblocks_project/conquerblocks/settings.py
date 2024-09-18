@@ -74,6 +74,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "conquerblocks.context_processor.get_clave"
             ],
         },
     },
@@ -195,3 +196,16 @@ EMAIL_HOST_PASSWORD = 'gacv rysb qvpk vcus'    # Reemplaza con tu contraseña de
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/'  # La vista a la que se redirige después de un login exitoso
 LOGOUT_REDIRECT_URL = '/'  # La vista a la que se redirige después de un logout
+
+
+import environ
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+CLAVE = env('CLAVE')
+COLOR = env('COLOR')
