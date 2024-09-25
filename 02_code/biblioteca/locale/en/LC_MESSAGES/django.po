@@ -8,16 +8,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-18 07:56+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2024-09-25 07:54+0200\n"
+"PO-Revision-Date: 2024-09-25 07:55+0200\n"
+"Last-Translator:   <b@b.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
-"1 : 2;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.10.0\n"
+
+#: biblioteca/templates/_includes/_menu_principal.html:3
+msgid "Menú principal"
+msgstr "Principal menu"
+
+#: biblioteca/templates/_includes/_menu_principal.html:5
+msgid "Inicio"
+msgstr "Home"
 
 #: biblioteca/views.py:82
 msgid "El correo se ha enviado correctamente"
@@ -82,8 +90,8 @@ msgstr ""
 
 #: env/lib/python3.12/site-packages/django/core/validators.py:267
 msgid ""
-"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
-"hyphens."
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or"
+" hyphens."
 msgstr ""
 
 #: env/lib/python3.12/site-packages/django/core/validators.py:279
@@ -289,15 +297,15 @@ msgstr ""
 #: env/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1550
 #, python-format
 msgid ""
-"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
-"uuuuuu]][TZ] format."
+"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD "
+"HH:MM[:ss[.uuuuuu]][TZ] format."
 msgstr ""
 
 #: env/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1558
 #, python-format
 msgid ""
-"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
-"[TZ]) but it is an invalid date/time."
+"“%(value)s” value has the correct format (YYYY-MM-DD "
+"HH:MM[:ss[.uuuuuu]][TZ]) but it is an invalid date/time."
 msgstr ""
 
 #: env/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1563
@@ -316,8 +324,8 @@ msgstr ""
 #: env/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1853
 #, python-format
 msgid ""
-"“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[."
-"uuuuuu] format."
+"“%(value)s” value has an invalid format. It must be in [DD] "
+"[[HH:]MM:]ss[.uuuuuu] format."
 msgstr ""
 
 #: env/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1857
@@ -476,7 +484,8 @@ msgid "Many-to-many relationship"
 msgstr ""
 
 #. Translators: If found as last label character, these punctuation
-#. characters will prevent the default label_suffix to be appended to the label
+#. characters will prevent the default label_suffix to be appended to the
+#. label
 #: env/lib/python3.12/site-packages/django/forms/boundfield.py:185
 msgid ":?.!"
 msgstr ""
@@ -526,7 +535,8 @@ msgstr ""
 
 #: env/lib/python3.12/site-packages/django/forms/fields.py:633
 #, python-format
-msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid ""
+"Ensure this filename has at most %(max)d character (it has %(length)d)."
 msgid_plural ""
 "Ensure this filename has at most %(max)d characters (it has %(length)d)."
 msgstr[0] ""
@@ -636,7 +646,8 @@ msgid "The inline value did not match the parent instance."
 msgstr ""
 
 #: env/lib/python3.12/site-packages/django/forms/models.py:1448
-msgid "Select a valid choice. That choice is not one of the available choices."
+msgid ""
+"Select a valid choice. That choice is not one of the available choices."
 msgstr ""
 
 #: env/lib/python3.12/site-packages/django/forms/models.py:1587
@@ -1099,10 +1110,10 @@ msgstr ""
 
 #: env/lib/python3.12/site-packages/django/views/csrf.py:45
 msgid ""
-"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
-"including the “Referrer-Policy: no-referrer” header, please remove them. The "
-"CSRF protection requires the “Referer” header to do strict referer checking. "
-"If you’re concerned about privacy, use alternatives like <a "
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or"
+" including the “Referrer-Policy: no-referrer” header, please remove them. "
+"The CSRF protection requires the “Referer” header to do strict referer "
+"checking. If you’re concerned about privacy, use alternatives like <a "
 "rel=\"noreferrer\" …> for links to third-party sites."
 msgstr ""
 
@@ -1154,8 +1165,8 @@ msgstr ""
 #: env/lib/python3.12/site-packages/django/views/generic/dates.py:652
 #, python-format
 msgid ""
-"Future %(verbose_name_plural)s not available because %(class_name)s."
-"allow_future is False."
+"Future %(verbose_name_plural)s not available because "
+"%(class_name)s.allow_future is False."
 msgstr ""
 
 #: env/lib/python3.12/site-packages/django/views/generic/dates.py:692
@@ -1213,10 +1224,10 @@ msgstr ""
 #: env/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:221
 #, python-format
 msgid ""
-"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
-"%(version)s/ref/settings/#debug\" target=\"_blank\" "
-"rel=\"noopener\">DEBUG=True</a> is in your settings file and you have not "
-"configured any URLs."
+"You are seeing this page because <a "
+"href=\"https://docs.djangoproject.com/en/%(version)s/ref/settings/#debug\" "
+"target=\"_blank\" rel=\"noopener\">DEBUG=True</a> is in your settings file "
+"and you have not configured any URLs."
 msgstr ""
 
 #: env/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:229
@@ -1383,8 +1394,8 @@ msgstr ""
 
 #: env/lib/python3.12/site-packages/grappelli/templates/admin/500.html:20
 msgid ""
-"There's been an error. It's been reported to the site administrators via e-"
-"mail and should be fixed shortly. Thanks for your patience."
+"There's been an error. It's been reported to the site administrators via "
+"e-mail and should be fixed shortly. Thanks for your patience."
 msgstr ""
 
 #: env/lib/python3.12/site-packages/grappelli/templates/admin/actions.html:4
@@ -1599,8 +1610,8 @@ msgstr ""
 #: env/lib/python3.12/site-packages/grappelli/templates/admin/delete_confirmation.html:37
 #, python-format
 msgid ""
-"Deleting the %(object_name)s '%(escaped_object)s' would require deleting the "
-"following protected related objects:"
+"Deleting the %(object_name)s '%(escaped_object)s' would require deleting the"
+" following protected related objects:"
 msgstr ""
 
 #: env/lib/python3.12/site-packages/grappelli/templates/admin/delete_confirmation.html:47
@@ -1713,9 +1724,9 @@ msgstr ""
 
 #: env/lib/python3.12/site-packages/grappelli/templates/admin/invalid_setup.html:16
 msgid ""
-"Something's wrong with your database installation. Make sure the appropriate "
-"database tables have been created, and make sure the database is readable by "
-"the appropriate user."
+"Something's wrong with your database installation. Make sure the appropriate"
+" database tables have been created, and make sure the database is readable "
+"by the appropriate user."
 msgstr ""
 
 #: env/lib/python3.12/site-packages/grappelli/templates/admin/login.html:26
@@ -1750,8 +1761,8 @@ msgstr ""
 #: env/lib/python3.12/site-packages/grappelli/templates/admin/object_history.html:42
 #: env/lib/python3.12/site-packages/grappelli/templates/reversion/object_history.html:36
 msgid ""
-"This object doesn't have a change history. It probably wasn't added via this "
-"admin site."
+"This object doesn't have a change history. It probably wasn't added via this"
+" admin site."
 msgstr ""
 
 #: env/lib/python3.12/site-packages/grappelli/templates/admin/pagination.html:9
@@ -1834,14 +1845,10 @@ msgstr ""
 msgid ""
 "\n"
 "            <p>To install bookmarklets, drag the link to your bookmarks\n"
-"    toolbar, or right-click the link and add it to your bookmarks. Now you "
-"can\n"
-"    select the bookmarklet from any page in the site.  Note that some of "
-"these\n"
-"    bookmarklets require you to be viewing the site from a computer "
-"designated\n"
-"    as \"internal\" (talk to your system administrator if you aren't sure "
-"if\n"
+"    toolbar, or right-click the link and add it to your bookmarks. Now you can\n"
+"    select the bookmarklet from any page in the site.  Note that some of these\n"
+"    bookmarklets require you to be viewing the site from a computer designated\n"
+"    as \"internal\" (talk to your system administrator if you aren't sure if\n"
 "    your computer is \"internal\").</p>\n"
 "        "
 msgstr ""
@@ -1900,8 +1907,8 @@ msgstr ""
 
 #: env/lib/python3.12/site-packages/grappelli/templates/registration/password_change_form.html:18
 msgid ""
-"Please enter your old password, for security's sake, and then enter your new "
-"password twice so we can verify you typed it in correctly."
+"Please enter your old password, for security's sake, and then enter your new"
+" password twice so we can verify you typed it in correctly."
 msgstr ""
 
 #: env/lib/python3.12/site-packages/grappelli/templates/registration/password_change_form.html:23

@@ -4,3 +4,4 @@ sqlparse==0.5.0
 django-debug-toolbar==4.4.6
 django-extensions==3.2.3
 django-import-export==4.1.1
+django-rosetta==0.10.0
