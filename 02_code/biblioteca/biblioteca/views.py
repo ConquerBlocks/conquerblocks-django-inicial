@@ -7,6 +7,11 @@ from books.models import Autor, Libro, Editorial
 from books.forms import SearchForm
 from .form import ContactForm
 
+#import settings
+from django.conf import settings
+
+
+
 # Vistas generales de la aplicación
 def home_view(request):
     return render(request, "general/home.html")
@@ -28,7 +33,7 @@ def home_view(request):
 #         autores = Autor.objects.filter(nombre__icontains=busqueda)
 #         editoriales = Editorial.objects.filter(nombre__icontains=busqueda)
 #         libros = Libro.objects.filter(titulo__icontains=busqueda)
-        
+
 #         context = {
 #             'autores': autores,
 #             'editoriales': editoriales,
@@ -87,7 +92,7 @@ def contact_view(request):
               'formulario' : formulario,
             }
             return render(request, "general/contacto.html", context)
-  
+
     formulario = ContactForm()
     context = {
       'formulario' : formulario
@@ -98,17 +103,4 @@ def contact_view(request):
 
 from django.views.generic import View
 from django.http import HttpResponseRedirect
-
-class SetLanguageView(View):
-    def post(self, request, *args, **kwargs):
-        # Obtenemos el idioma seleccionado del formulario
-        language = request.POST.get('language', None)
-        
-        # Si se seleccionó un idioma, lo activamos
-        if language:
-            translation.activate(language)
-            # request.session[translation.LANGUAGE_SESSION_KEY] = language
-        
-        # Redirigimos a la página desde donde se hizo la petición
-        next_url = request.POST.get('next', '/')
-        return HttpResponseRedirect(next_url)
+LANGUAGE_SESSION_KEY = 'django_language'

@@ -14,17 +14,19 @@
     {% endif %}
   </ul>
 
-  <form action="{% url 'set_language' %}" method="post">
+  <form method="post" action="{% url 'set_language' %}">
     {% csrf_token %}
     <select name="language">
-        <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>English</option>
-        <option value="es" {% if LANGUAGE_CODE == 'es' %}selected{% endif %}>Español</option>
+        {% get_current_language as LANGUAGE_CODE %}
+        {% for lang_code, lang_name in LANGUAGES %}
+            <option value="{{ lang_code }}" {% if LANGUAGE_CODE == lang_code %}selected{% endif %}>
+                {{ lang_name }} ({{ lang_code }})
+            </option>
+        {% endfor %}
     </select>
-    <input type="hidden" name="next" value="{{ request.path }}">
-    <button type="submit">Cambiar idioma</button>
+    <input type="hidden" name="next" value="{{ request.path }}" />
+    <input type="submit" value="{% trans 'Cambiar' %}">
   </form>
-
-
 
   {% if messages %}
   <section class="messages">
