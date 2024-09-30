@@ -1,0 +1,13 @@
+{% extends "general/layout.html" %}
+
+{% block head_title %}Página detalle de Libro{% endblock %}
+{% block page_title %}Libro{% endblock %}
+
+{% block page_content %}
+    <h1>{{ titulo }}</h1>
+    <h2>Nombre: {{ libro.titulo }}</h2>
+    <p>Descripción: {{ libro.descripcion }}</p>
+
+
+    <p><a href="{% url 'libro:list' %}">Volver a la lista de libros</a></p>
+{% endblock %}
