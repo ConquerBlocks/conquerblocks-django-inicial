@@ -39,9 +39,7 @@ urlpatterns += i18n_patterns(
     path('libro/', include('books.urls.libro_url', namespace='libro')),
 
     path("contacta-con-nosotros/", contact_view, name="contacto"),
-    prefix_default_language=settings.PREFIX_DEFAULT_LANGUAGE  # Usar la configuración de PREFIX_DEFAULT_LANGUAGE
 )
-
 
 if 'rosetta' in settings.INSTALLED_APPS:
     urlpatterns += [
