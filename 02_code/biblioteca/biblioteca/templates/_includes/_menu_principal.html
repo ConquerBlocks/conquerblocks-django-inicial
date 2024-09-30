@@ -4,7 +4,7 @@
   <ul>
     <li><a href="{% url 'home' %}">{% trans 'Inicio' %}</a></li>
     <li><a href="">Autores</a></li>
-    <li><a href="">Libros</a></li>
+    <li><a href="{% url 'libro:list' %}">Libros</a></li>
     <li><a href="{% url 'editorial:list' %}">Editoriales</a></li>
     <li><a href="{% url 'search' %}">Buscar</a></li>
     <li><a href="{% url 'contacto' %}">Contacto</a></li>

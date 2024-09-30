@@ -98,9 +98,3 @@ def contact_view(request):
       'formulario' : formulario
     }
     return render(request, "general/contacto.html", context)
-
-
-
-from django.views.generic import View
-from django.http import HttpResponseRedirect
-LANGUAGE_SESSION_KEY = 'django_language'
