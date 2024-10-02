@@ -6,3 +6,4 @@ django-extensions==3.2.3
 django-import-export==4.1.1
 django-rosetta==0.10.0
 django-modeltranslation==0.19.9
+mysqlclient==2.2.4
