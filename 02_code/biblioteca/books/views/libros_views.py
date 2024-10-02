@@ -3,6 +3,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from books.models import Libro
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 
 def libros_view(request):
     return render(request, "libros/libros.html")
@@ -11,6 +12,10 @@ class LibrosListView(ListView):
     model = Libro
     template_name = "libros/libros.html"
     context_object_name = 'libros'
+
+class LibroDetailView(DetailView):
+    model = Libro
+    template_name='libros/libro_detail.html'
 
 
 class LibroCreateView(CreateView):

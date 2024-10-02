@@ -1,10 +1,10 @@
 from django import forms
-
+from django.utils.translation import gettext_lazy as _
 
 class ContactForm(forms.Form):
-    nombre = forms.CharField(max_length=50, label="Nombre")
-    email = forms.EmailField(label="Email")
-    comentario = forms.CharField(max_length=1000, label="Comentario", widget=forms.Textarea)
+    nombre = forms.CharField(max_length=50, label=_("Nombre"))
+    email = forms.EmailField(label=_("Email"))
+    comentario = forms.CharField(max_length=1000, label=_("Comentario"), widget=forms.Textarea)
 
     def clean_nombre(self):
         nombre = self.cleaned_data.get('nombre')
