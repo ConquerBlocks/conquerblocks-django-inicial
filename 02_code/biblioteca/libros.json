@@ -1,0 +1,22 @@
+[
+{
+    "model": "books.libro",
+    "pk": 15,
+    "fields": {
+        "titulo": "El principito",
+        "titulo_es": "El principito",
+        "titulo_en": "The little king",
+        "isbn": "5555",
+        "fecha_publicacion": "2024-09-30",
+        "numero_paginas": 60,
+        "idioma": "ES",
+        "descripcion": "Descripción en español",
+        "descripcion_es": "Descripción en español",
+        "descripcion_en": "Descripción en inglés",
+        "editorial": 2,
+        "genero": null,
+        "precio": null,
+        "autores": []
+    }
+}
+]

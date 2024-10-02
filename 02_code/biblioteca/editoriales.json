@@ -1,0 +1,206 @@
+[
+{
+    "model": "books.editorial",
+    "pk": 2,
+    "fields": {
+        "nombre": "Editorial 2",
+        "direccion": "Dirección 2",
+        "ciudad": "Ciudad",
+        "estado": "Estado",
+        "pais": "País",
+        "codigo_postal": "00002",
+        "telefono": "1234567892",
+        "email": "editorial2@example.com",
+        "sitio_web": "http://editorial2.com",
+        "fecha_fundacion": "2002-01-01",
+        "created_by": null
+    }
+},
+{
+    "model": "books.editorial",
+    "pk": 3,
+    "fields": {
+        "nombre": "Editorial 3",
+        "direccion": "Dirección 3",
+        "ciudad": "Ciudad",
+        "estado": "Estado",
+        "pais": "País",
+        "codigo_postal": "00003",
+        "telefono": "1234567893",
+        "email": "editorial3@example.com",
+        "sitio_web": "http://editorial3.com",
+        "fecha_fundacion": "2003-01-01",
+        "created_by": null
+    }
+},
+{
+    "model": "books.editorial",
+    "pk": 4,
+    "fields": {
+        "nombre": "Editorial 4",
+        "direccion": "Dirección 4",
+        "ciudad": "Ciudad",
+        "estado": "Estado",
+        "pais": "País",
+        "codigo_postal": "00004",
+        "telefono": "1234567894",
+        "email": "editorial4@example.com",
+        "sitio_web": "http://editorial4.com",
+        "fecha_fundacion": "2004-01-01",
+        "created_by": null
+    }
+},
+{
+    "model": "books.editorial",
+    "pk": 5,
+    "fields": {
+        "nombre": "Editorial 5",
+        "direccion": "Dirección 5",
+        "ciudad": "Ciudad",
+        "estado": "Estado",
+        "pais": "País",
+        "codigo_postal": "00005",
+        "telefono": "1234567895",
+        "email": "editorial5@example.com",
+        "sitio_web": "http://editorial5.com",
+        "fecha_fundacion": "2005-01-01",
+        "created_by": null
+    }
+},
+{
+    "model": "books.editorial",
+    "pk": 6,
+    "fields": {
+        "nombre": "Editorial 6",
+        "direccion": "Dirección 6",
+        "ciudad": "Ciudad",
+        "estado": "Estado",
+        "pais": "País",
+        "codigo_postal": "00006",
+        "telefono": "1234567896",
+        "email": "editorial6@example.com",
+        "sitio_web": "http://editorial6.com",
+        "fecha_fundacion": "2006-01-01",
+        "created_by": null
+    }
+},
+{
+    "model": "books.editorial",
+    "pk": 7,
+    "fields": {
+        "nombre": "Editorial 7",
+        "direccion": "Dirección 7",
+        "ciudad": "Ciudadd",
+        "estado": "Estado",
+        "pais": "País",
+        "codigo_postal": "00007",
+        "telefono": "1234567897",
+        "email": "editorial7@example.com",
+        "sitio_web": "http://editorial7.com",
+        "fecha_fundacion": "2007-01-01",
+        "created_by": null
+    }
+},
+{
+    "model": "books.editorial",
+    "pk": 8,
+    "fields": {
+        "nombre": "Editorial 8",
+        "direccion": "Dirección 8",
+        "ciudad": "Ciudad",
+        "estado": "Estado",
+        "pais": "País",
+        "codigo_postal": "00008",
+        "telefono": "1234567898",
+        "email": "editorial8@example.com",
+        "sitio_web": "http://editorial8.com",
+        "fecha_fundacion": "2008-01-01",
+        "created_by": null
+    }
+},
+{
+    "model": "books.editorial",
+    "pk": 10,
+    "fields": {
+        "nombre": "Editorial 10",
+        "direccion": "Dirección 10",
+        "ciudad": "Ciudad",
+        "estado": "Estado",
+        "pais": "País",
+        "codigo_postal": "000010",
+        "telefono": "12345678910",
+        "email": "editorial10@example.com",
+        "sitio_web": "http://editorial10.com",
+        "fecha_fundacion": "2010-01-01",
+        "created_by": null
+    }
+},
+{
+    "model": "books.editorial",
+    "pk": 12,
+    "fields": {
+        "nombre": "Tercera editorial creada",
+        "direccion": "",
+        "ciudad": null,
+        "estado": null,
+        "pais": null,
+        "codigo_postal": null,
+        "telefono": null,
+        "email": "prueba@prueba.com",
+        "sitio_web": null,
+        "fecha_fundacion": "2024-01-01",
+        "created_by": null
+    }
+},
+{
+    "model": "books.editorial",
+    "pk": 13,
+    "fields": {
+        "nombre": "asdfa",
+        "direccion": "asfda",
+        "ciudad": null,
+        "estado": null,
+        "pais": null,
+        "codigo_postal": null,
+        "telefono": null,
+        "email": "bienve@editorial.com",
+        "sitio_web": null,
+        "fecha_fundacion": "2024-08-10",
+        "created_by": null
+    }
+},
+{
+    "model": "books.editorial",
+    "pk": 14,
+    "fields": {
+        "nombre": "asdfa",
+        "direccion": "asfda",
+        "ciudad": null,
+        "estado": null,
+        "pais": null,
+        "codigo_postal": null,
+        "telefono": null,
+        "email": "bienve@editorial.com",
+        "sitio_web": null,
+        "fecha_fundacion": "2024-08-10",
+        "created_by": null
+    }
+},
+{
+    "model": "books.editorial",
+    "pk": 15,
+    "fields": {
+        "nombre": "Editorial con dueño",
+        "direccion": "asdfadf",
+        "ciudad": null,
+        "estado": null,
+        "pais": null,
+        "codigo_postal": null,
+        "telefono": null,
+        "email": "bienve@prueba.com",
+        "sitio_web": null,
+        "fecha_fundacion": "2020-01-01",
+        "created_by": 3
+    }
+}
+]
