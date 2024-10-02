@@ -1,0 +1,44 @@
+# Para ubuntu o WSL
+sudo apt-get update
+sudo apt-get install python3-dev default-libmysqlclient-dev build-essential
+
+pip install mysqlclient
+
+
+# Para mac
+brew install mysql
+brew install openssl
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/openssl/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl/include"
+
+pip install mysqlclient
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mydb',                      # Nombre de la base de datos
+        'USER': 'django_user_db',             # Usuario creado para la base de datos
+        'PASSWORD': 'django_user_pass',       # Contraseña del usuario
+        'HOST': '127.0.0.1',                  # Dirección IP del host (localhost o la IP de tu máquina)
+        'PORT': '3306',                       # Puerto por defecto de MySQL
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        }
+    }
+}
+
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', ]
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: django_user_db
+      MYSQL_PASSWORD: django_user_pass
+    ports:
+      - "3306:3306"
