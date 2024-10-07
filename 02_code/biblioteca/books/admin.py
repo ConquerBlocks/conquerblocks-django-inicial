@@ -42,6 +42,36 @@ class EditorialAdmin(admin.ModelAdmin):
     ]
 
 
+
+# # Definir la acción personalizada
+# def make_published(modeladmin, request, queryset):
+#     # Actualizar los objetos seleccionados a "publicados"
+#     queryset.update(is_out_of_stock=True)
+#     # Mostrar un mensaje informativo en la interfaz de administración
+#     modeladmin.message_user(request, "Los libros seleccionados han sido marcados como fuera de stock.")
+
+# # Personalizar el nombre de la acción
+# make_published.short_description = "Marcar como fuera de stock"
+
+# # Definir la acción personalizada para exportar a CSV
+# def export_posts_to_csv(modeladmin, request, queryset):
+#     import csv
+#     from django.http import HttpResponse
+
+#     response = HttpResponse(content_type='text/csv')
+#     response['Content-Disposition'] = 'attachment; filename="posts.csv"'
+#     writer = csv.writer(response)
+#     writer.writerow(['Título', 'ISBN', 'Fecha de publicación', 'Número de páginas', 'Idioma'])
+#     for post in queryset:
+#         writer.writerow([post.titulo, post.isbn, post.fecha_publicacion, post.numero_paginas, post.idioma])
+#     return response
+
+# # Personalizar el nombre de la acción
+# export_posts_to_csv.short_description = "Exportar libros seleccionados a CSV"
+
+
+
+
 @admin.register(Libro)
 class LibroAdmin(admin.ModelAdmin):
     list_display = [
@@ -55,3 +85,4 @@ class LibroAdmin(admin.ModelAdmin):
     list_filter = ["editorial", "idioma"]
     search_fields = ["titulo", "autores__nombre"]
     filter_horizontal = ("autores",)
+    # actions = [make_published, export_posts_to_csv]
