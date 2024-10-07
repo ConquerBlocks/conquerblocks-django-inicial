@@ -43,33 +43,32 @@ class EditorialAdmin(admin.ModelAdmin):
 
 
 
-# # Definir la acción personalizada
-# def make_published(modeladmin, request, queryset):
-#     # Actualizar los objetos seleccionados a "publicados"
-#     queryset.update(is_out_of_stock=True)
-#     # Mostrar un mensaje informativo en la interfaz de administración
-#     modeladmin.message_user(request, "Los libros seleccionados han sido marcados como fuera de stock.")
+def set_out_of_stock(modeladmin, request, queryset):
+    # Actualizar los objetos seleccionados a "publicados"
+    queryset.update(is_out_of_stock=True)
+    # Mostrar un mensaje informativo en la interfaz de administración
+    modeladmin.message_user(request, "Los libros seleccionados han sido marcados como fuera de stock.")
 
-# # Personalizar el nombre de la acción
-# make_published.short_description = "Marcar como fuera de stock"
+# Personalizar el nombre de la acción
+set_out_of_stock.short_description = "Marcar como fuera de stock"
 
-# # Definir la acción personalizada para exportar a CSV
-# def export_posts_to_csv(modeladmin, request, queryset):
-#     import csv
-#     from django.http import HttpResponse
+# Definir la acción personalizada para exportar a CSV
+def export_books_to_csv(modeladmin, request, queryset):
+    import csv
+    from django.http import HttpResponse
 
-#     response = HttpResponse(content_type='text/csv')
-#     response['Content-Disposition'] = 'attachment; filename="posts.csv"'
-#     writer = csv.writer(response)
-#     writer.writerow(['Título', 'ISBN', 'Fecha de publicación', 'Número de páginas', 'Idioma'])
-#     for post in queryset:
-#         writer.writerow([post.titulo, post.isbn, post.fecha_publicacion, post.numero_paginas, post.idioma])
-#     return response
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="books.csv"'
+    writer = csv.writer(response)
 
-# # Personalizar el nombre de la acción
-# export_posts_to_csv.short_description = "Exportar libros seleccionados a CSV"
+    writer.writerow(['Título', 'ISBN', 'Fecha de publicación', 'Número de páginas', 'Idioma'])
+    for book in queryset:
+        writer.writerow([book.titulo, book.isbn, book.fecha_publicacion, book.numero_paginas, book.idioma])
 
+    return response
 
+# Personalizar el nombre de la acción
+export_books_to_csv.short_description = "Exportar libros seleccionados a CSV"
 
 
 @admin.register(Libro)
@@ -78,11 +77,12 @@ class LibroAdmin(admin.ModelAdmin):
         "titulo",
         "editorial",
         "isbn",
+        "is_out_of_stock",
         "fecha_publicacion",
         "numero_paginas",
         "idioma",
     ]
-    list_filter = ["editorial", "idioma"]
+    list_filter = ["editorial", "idioma", 'is_out_of_stock']
     search_fields = ["titulo", "autores__nombre"]
     filter_horizontal = ("autores",)
-    # actions = [make_published, export_posts_to_csv]
+    actions = [set_out_of_stock, export_books_to_csv]
