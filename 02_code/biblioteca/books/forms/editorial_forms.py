@@ -1,6 +1,8 @@
 from django import forms
 from django.forms import ModelForm
 from books.models import Editorial
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Fieldset, Submit
 
 class EditorialCreate(forms.Form):
     nombre = forms.CharField(max_length=200)
@@ -26,8 +28,10 @@ class EditorialModelFormCreate(ModelForm):
         model = Editorial
         fields = [
             'nombre',
-            'codigo_postal',
             'direccion',
             'email',
             'fecha_fundacion',
+            'level',
+            'sitio_web'
         ]
+

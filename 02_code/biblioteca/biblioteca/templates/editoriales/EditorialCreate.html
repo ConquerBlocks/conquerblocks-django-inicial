@@ -1,5 +1,7 @@
 {% extends "general/layout.html" %}
 
+{% load crispy_forms_tags %}
+
 {% block head_title %}Página de Editoriales{% endblock %}
 {% block page_title %}Nueva editorial{% endblock %}
 
@@ -7,8 +9,19 @@
   <h2>Datos de la Editorial</h2>
     <form action="" method="post">
       {% csrf_token %}
-      {{ form.as_p }}
-      <button>Crear Editorial</button>
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          {{ form.nombre|as_crispy_field }}
+          {{ form.direccion|as_crispy_field }}
+          {{ form.email|as_crispy_field }}
+        </div>
+        <div class="col-12 col-sm-6">
+          {{ form.fecha_fundacion|as_crispy_field }}
+          {{ form.level|as_crispy_field }}
+          {{ form.sitio_web|as_crispy_field }}
+        </div>
+      </div>
+      <button class="btn btn-secondary">Crear Editorial</button>
     </form>
 
 {% endblock %}

@@ -16,5 +16,13 @@ class Editorial(models.Model):
     fecha_fundacion = models.DateField()
     created_by = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
 
+    LEVEL_CHOICES = {
+        "1": "Nivel 1",
+        "2": "Nivel 2",
+        "3": "Nivel 3"
+    }
+
+    level = models.CharField('Nivel', max_length=2, choices=LEVEL_CHOICES, default="1")
+
     def __str__(self):
         return self.nombre

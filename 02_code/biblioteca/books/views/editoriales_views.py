@@ -31,9 +31,7 @@ class EditorialCreateView(CreateView):
     model = Editorial
     template_name = "editoriales/EditorialCreate.html"
     success_url = reverse_lazy('editorial:list')
-    fields = [
-        'nombre', 'direccion', 'ciudad', 'estado', 'pais', 'codigo_postal','telefono', 'email', 'sitio_web', 'fecha_fundacion'
-    ]
+    form_class = EditorialModelFormCreate
 
     def form_valid(self, form):
         form.instance.created_by = self.request.user
