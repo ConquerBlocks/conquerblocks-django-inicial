@@ -7,6 +7,14 @@
   {% include '_includes/_messages.html' %}
 
   <h1>Homepage</h1>
-  <p>Este es el contenido de la página home</p>
+  <p>¡Bienvenido a InstaConquer!</p>
+
+  <section>
+    <h2>Últimas publicaciones</h2>
+    {% for post in last_posts %}
+      {% include '_includes/posts/_post.html' %}
+      <hr class="hr" />
+    {% endfor %}
+  </section>
 </div>
 {% endblock %}

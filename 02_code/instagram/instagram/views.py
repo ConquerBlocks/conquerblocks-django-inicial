@@ -9,15 +9,26 @@ from django.views.generic.edit import FormView
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
-
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from .forms import RegistrationForm, LoginForm
 from django.views.generic import DetailView
 
 from profiles.models import UserProfile
 from django.views.generic.edit import UpdateView
+from posts.models import Post
 
 class HomeView(TemplateView):
     template_name = "general/home.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        last_posts = Post.objects.all().order_by('-created_at')[:5]
+        context['last_posts'] = last_posts
+
+        return context
+
 
 
 class LoginView(FormView):
@@ -58,13 +69,13 @@ class LegalView(TemplateView):
 class ContactView(TemplateView):
     template_name = "general/contact.html"
 
-
+@method_decorator(login_required, name='dispatch')
 class ProfileDetailView(DetailView):
     model = UserProfile
     template_name = "general/profile_detail.html"
     context_object_name = "profile"
 
-
+@method_decorator(login_required, name='dispatch')
 class ProfileUpdateView(UpdateView):
     model = UserProfile
     template_name = "general/profile_update.html"
@@ -78,7 +89,7 @@ class ProfileUpdateView(UpdateView):
     def get_success_url(self):
         return reverse('profile_detail', args=[self.object.pk])
 
-
+@method_decorator(login_required, name='dispatch')
 def logout_view(request):
     logout(request)
     messages.add_message(request, messages.INFO, "Se ha cerrado sesión correctamente.")
