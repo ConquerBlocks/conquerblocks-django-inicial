@@ -1,4 +1,5 @@
 {% extends "general/layout.html" %}
+{% load crispy_forms_tags %}
 
 {% block head_title %}Bienvenido a nuestro InstaConquer{% endblock %}
 
@@ -6,7 +7,7 @@
 <div class="container">
   {% include '_includes/_messages.html' %}
 
-  <h1>Mi perfil</h1>
+  <h1>Perfil</h1>
   <p>Biografía: {{ profile.bio|default_if_none:"Sin rellenar" }}</p>
   <p>Fecha de nacimiento: {{ profile.birth_date|default_if_none:"Sin rellenar" }}</p>
   <p>
@@ -17,14 +18,29 @@
     {% endif %}
   </p>
   <p>Seguidores: {{ profile.followers.count }}</p>
-  <p><a href="{% url 'profile_update' profile.pk %}">Editar</a></p>
-
+  <p>Seguidos: {{ profile.followers.count }}</p>
+  {% if profile not in request.user.profile.follower_set.all %}
+    <p>No lo estoy siguiendo</p>
+    <p>
+      <form method="post">
+        {% csrf_token %}  
+        <input type="hidden" name="profile_pk" value="{{ profile.pk }}">
+        <button>Seguir</button>
+      </form>
+    </p>
+  {% endif %}
+  {% if profile.user == request.user %}
+    <p><a href="{% url 'profile_update' profile.pk %}">Editar</a></p>
+  {% endif %}
   <section>
     <h2>Publicaciones</h2>
-    {% for post in profile.user.posts.all %}
-      {% include '_includes/posts/_post.html' %}
-      <hr class="hr" />
-    {% endfor %}
+    <div class="row">
+      {% for post in profile.user.posts.all %}
+      <div class="col-12 col-sm-6 col-md-4">
+        {% include '_includes/posts/_post.html' %}
+      </div>
+      {% endfor %}
+    </div>
 
   </section>
 </div>
