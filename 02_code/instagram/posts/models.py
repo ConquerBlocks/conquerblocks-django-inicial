@@ -8,7 +8,7 @@ class Post(models.Model):
     caption = models.TextField(max_length=500, blank=True, verbose_name='Descripción')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creación')
     likes = models.ManyToManyField(User, related_name='liked_posts', blank=True, verbose_name='Nº de Likes"')
-    
+
     class Meta:
         verbose_name = 'Post'
         verbose_name_plural = 'Posts'

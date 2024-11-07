@@ -1,0 +1,28 @@
+{% extends "general/layout.html" %}
+
+{% block head_title %}Bienvenido a nuestro InstaConquer{% endblock %}
+
+{% block page_content %}
+<div class="container">
+  {% include '_includes/_messages.html' %}
+
+  <h1>Perfiles</h1>
+  <div class="row">
+    {% for profile in profiles %}
+    <article class="col-12 col-sm-4">
+      <h5>{{ profile.user.username }}</h5>
+      <p>
+        {% if profile.profile_picture %}
+          <img width="100" src="{{ profile.profile_picture.url }}" alt="">
+        {% else %}
+          No dispone de foto de perfil
+        {% endif %}
+      </p>      
+      <p>{{ profile.bio|default_if_none:"Sin rellenar" }}</p>
+      <p>Seguidores: {{ profile.followers.count }}</p>
+      <p><a href="{% url 'profile_detail' profile.pk %}">Ver perfil</a></p>
+    </article>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
