@@ -13,6 +13,9 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.username
+    
+    def follow(self, profile):
+        Follow.objects.get_or_create(follower=self, following=profile)
 
 
 class Follow(models.Model):

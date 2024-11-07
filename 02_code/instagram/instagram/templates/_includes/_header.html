@@ -4,6 +4,7 @@
     <nav>
       <ul>
         <li><a href="{% url 'home' %}">Inicio</a></li>
+        <li><a href="{% url 'profile_list' %}">Perfiles</a></li>
         {% if not request.user.is_authenticated %}
           <li><a href="{% url 'login' %}">Login</a></li>
           <li><a href="{% url 'register' %}">Registro</a></li>

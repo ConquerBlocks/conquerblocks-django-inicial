@@ -17,12 +17,14 @@ from django.views.generic import DetailView
 from profiles.models import Follow
 
 from profiles.forms import FollowForm
+from django.views.generic import ListView
 
 from profiles.models import UserProfile
 from django.views.generic.edit import UpdateView
 from posts.models import Post
 
 from django.views.generic import ListView
+from .forms import ProfileFollow
 
 class HomeView(TemplateView):
     template_name = "general/home.html"
@@ -146,9 +148,9 @@ class ProfileUpdateView(UpdateView):
     fields = ['profile_picture', 'bio', 'birth_date']
 
     def dispatch(self, request, *args, **kwargs):
-        if request.user.pk != self.get_object().user.pk:
-            messages.add_message(request, messages.ERROR, "No puedes editar un perfil que no es tuyo.")
-            return HttpResponseRedirect(reverse('profile_detail', args=[self.get_object().pk]))
+        user_profile = self.get_object()
+        if user_profile.user != self.request.user:
+            return HttpResponseRedirect(reverse('home'))
         return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
