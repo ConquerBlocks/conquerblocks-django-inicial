@@ -1,0 +1,37 @@
+{% extends "general/layout.html" %}
+
+{% block head_title %}Bienvenido a nuestro InstaConquer{% endblock %}
+
+{% block page_content %}
+<div class="container">
+  {% include '_includes/_messages.html' %}
+
+  <h1>Detalle de publicación</h1>
+  <div class="row">
+    <article class="col-md-4">
+      <div class="bg-white border mt-2">
+      <div>
+          <div class="d-flex flex-row justify-content-between align-items-center p-2 border-bottom">
+              <div class="d-flex flex-row align-items-center feed-text px-2"><img class="rounded-circle" src="{{ post.user.profile.profile_picture.url }}" width="45">
+                  <div class="d-flex flex-column flex-wrap ml-2"><span class="font-weight-bold">{{ post.user.first_name }}</span><span class="text-black-50 time">{{ post.created_at }}</span></div>
+              </div>
+              <div class="feed-icon px-2"><i class="fa fa-ellipsis-v text-black-50"></i></div>
+          </div>
+      </div>
+      <div class="p-2 px-3"><span>{{ post.caption }}</span></div>                    
+      <div class="feed-image p-2 px-3">
+        <img class="img-fluid img-responsive" src="{{ post.image.url }}">
+      </div>
+      <div class="text-center">
+        <p>{{ post.likes.all.count }} <a href="{% url 'post_like' post.pk %}">
+          {% if request.user in post.likes.all %}
+            <i class="bi bi-suit-heart-fill"></i>
+          {% else %}
+            <i class="bi bi-heart"></i>
+          {% endif %}
+        </a></p>
+      </div>
+    </article>
+  </div>
+</div>
+{% endblock %}
