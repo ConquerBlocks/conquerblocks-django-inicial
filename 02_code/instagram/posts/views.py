@@ -10,6 +10,8 @@ from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.decorators import login_required
 
+from django.http import JsonResponse
+
 
 @method_decorator(login_required, name='dispatch')
 class PostCreateView(CreateView):
@@ -41,3 +43,25 @@ def like_post(request, pk):
         messages.add_message(request, messages.INFO, "Te gusta esta publicación.")
 
     return HttpResponseRedirect(reverse('post_detail', args=[pk]))
+
+@login_required
+def like_post_ajax(request, pk):
+    post = Post.objects.get(pk=pk)
+    if request.user in post.likes.all():
+        post.likes.remove(request.user)
+        return JsonResponse(
+          {
+              'message': 'Ya no te gusta esta publicación.',
+              'liked': False,
+              'nlikes': post.likes.all().count()
+            }
+        )
+    else:
+        post.likes.add(request.user)
+        return JsonResponse(
+          {
+              'message': 'Te gusta esta publicación.',
+              'liked': True,
+              'nlikes': post.likes.all().count()
+            }
+        )
