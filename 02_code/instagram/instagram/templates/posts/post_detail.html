@@ -23,14 +23,16 @@
         <img class="img-fluid img-responsive" src="{{ post.image.url }}">
       </div>
       <div class="text-center">
-        <p><span id="nLikes">{{ post.likes.all.count }}</span> 
-          <a id="likeButton" href="{% url 'post_like_ajax' post.pk %}">
-          {% if request.user in post.likes.all %}
-            <i class="bi bi-suit-heart-fill"></i>
-          {% else %}
-            <i class="bi bi-heart"></i>
-          {% endif %}
-        </a></p>
+        <p>
+          <a href="{% url 'post_like_ajax' post.pk %}" class="likeButton">
+            <span>{{ post.likes.all.count }}</span>
+            {% if request.user in post.likes.all %}
+              <i class="bi bi-suit-heart-fill"></i>
+            {% else %}
+              <i class="bi bi-heart"></i></p>
+            {% endif %}
+          </a>
+        </p>
       </div>
     </article>
   </div>
