@@ -31,10 +31,7 @@
       const likeButtons = document.querySelectorAll('a.likeButton');
       likeButtons.forEach(likeButton => {
         let nLikesSpan = likeButton.querySelector('span');
-        debugger;
-        {% comment %} if (!nLikesSpan){
-          return;
-        }; {% endcomment %}
+
         let nLikes = parseInt(nLikesSpan.innerHTML);
         likeButton.addEventListener('click', (event) => {
           // Prevenimos el comportamiento por defecto del botón
