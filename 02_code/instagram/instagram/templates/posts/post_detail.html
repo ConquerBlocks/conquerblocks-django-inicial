@@ -18,21 +18,23 @@
               <div class="feed-icon px-2"><i class="fa fa-ellipsis-v text-black-50"></i></div>
           </div>
       </div>
-      <div class="p-2 px-3"><span>{{ post.caption }}</span></div>                    
+      <div class="p-2 px-3"><span>{{ post.caption }}</span></div>
       <div class="feed-image p-2 px-3">
         <img class="img-fluid img-responsive" src="{{ post.image.url }}">
       </div>
       <div class="text-center">
-        <p>
-          <a href="{% url 'post_like_ajax' post.pk %}" class="likeButton">
-            <span>{{ post.likes.all.count }}</span>
-            {% if request.user in post.likes.all %}
-              <i class="bi bi-suit-heart-fill"></i>
-            {% else %}
-              <i class="bi bi-heart"></i></p>
-            {% endif %}
-          </a>
-        </p>
+        {% if request.user.is_authenticated %}
+          <p>
+            <a href="{% url 'post_like_ajax' post.pk %}" class="likeButton">
+              <span>{{ post.likes.all.count }}</span>
+              {% if request.user in post.likes.all %}
+                <i class="bi bi-suit-heart-fill"></i>
+              {% else %}
+                <i class="bi bi-heart"></i></p>
+              {% endif %}
+            </a>
+          </p>
+        {% endif %}
       </div>
     </article>
   </div>

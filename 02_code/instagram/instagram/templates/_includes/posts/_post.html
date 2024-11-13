@@ -13,16 +13,18 @@
   </div>
   <footer>
     <div class="text-center">
-      <p>
-        <a href="{% url 'post_like_ajax' post.pk %}" class="likeButton">
-          <span>{{ post.likes.all.count }}</span>
-          {% if request.user in post.likes.all %}
-            <i class="bi bi-suit-heart-fill"></i>
-          {% else %}
-            <i class="bi bi-heart"></i></p>
-          {% endif %}
-        </a>
-      </p>
+      {% if request.user.is_authenticated %}
+        <p>
+          <a href="{% url 'post_like_ajax' post.pk %}" class="likeButton">
+            <span>{{ post.likes.all.count }}</span>
+            {% if request.user in post.likes.all %}
+              <i class="bi bi-suit-heart-fill"></i>
+            {% else %}
+              <i class="bi bi-heart"></i></p>
+            {% endif %}
+          </a>
+        </p>
+      {% endif %}
     </div>
     <p class="text-center mt-3 mb-3">
       <a class="btn btn-primary btn-sm" role="button" href="{% url 'post_detail' post.pk %}">Ver post</a>

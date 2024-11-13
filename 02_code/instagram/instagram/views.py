@@ -95,7 +95,7 @@ class ProfileDetailView(DetailView, FormView):
     def get_initial(self):
         self.initial['profile_pk'] =  self.get_object().pk
         return super().get_initial()
-    
+
     def form_valid(self, form):
         profile_pk = form.cleaned_data.get('profile_pk')
         action = form.cleaned_data.get('action')
@@ -121,7 +121,7 @@ class ProfileDetailView(DetailView, FormView):
 
     def get_success_url(self):
         return reverse('profile_detail', args=[self.get_object().pk])
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
@@ -137,7 +137,9 @@ class ProfileListView(ListView):
     context_object_name = "profiles"
 
     def get_queryset(self):
-        return UserProfile.objects.all().order_by('user__username').exclude(user=self.request.user)
+        if self.request.user.is_authenticated:
+            return UserProfile.objects.all().order_by('user__username').exclude(user=self.request.user)
+        return UserProfile.objects.all().order_by('user__username')
 
 
 @method_decorator(login_required, name='dispatch')
@@ -156,7 +158,7 @@ class ProfileUpdateView(UpdateView):
     def form_valid(self, form):
         messages.add_message(self.request, messages.SUCCESS, "Perfil editado correctamente.")
         return super(ProfileUpdateView, self).form_valid(form)
-    
+
     def get_success_url(self):
         return reverse('profile_detail', args=[self.object.pk])
 

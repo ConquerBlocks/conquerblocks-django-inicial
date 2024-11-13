@@ -17,7 +17,7 @@
         {% else %}
           No dispone de foto de perfil
         {% endif %}
-      </p>      
+      </p>
       <p>{{ profile.bio|default_if_none:"Sin rellenar" }}</p>
       <p>Seguidores: {{ profile.followers.count }}</p>
       <p><a href="{% url 'profile_detail' profile.pk %}">Ver perfil</a></p>

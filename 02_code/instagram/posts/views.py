@@ -25,13 +25,11 @@ class PostCreateView(CreateView):
         messages.add_message(self.request, messages.SUCCESS, "Publicación creada correctamente.")
         return super(PostCreateView, self).form_valid(form)
 
-
-@method_decorator(login_required, name='dispatch')
 class PostDetailView(DetailView):
     template_name = "posts/post_detail.html"
     model = Post
     context_object_name = 'post'
-  
+
 @login_required
 def like_post(request, pk):
     post = Post.objects.get(pk=pk)
