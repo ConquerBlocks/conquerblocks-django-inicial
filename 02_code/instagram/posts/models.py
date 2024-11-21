@@ -18,14 +18,15 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
-    text = models.TextField(max_length=300)
-    created_at = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey(Post, verbose_name='Post al que pertenece el comentario', on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, verbose_name='Autor', on_delete=models.CASCADE, related_name='comments')
+    text = models.TextField(verbose_name='Contenido del comentario', max_length=300)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creación')
 
     class Meta:
         verbose_name = 'Comentario'
         verbose_name_plural = 'Comentarios'
+        ordering = ['-created_at']
 
     def __str__(self):
         return f"Coméntó {self.user.username} el post {self.post}"
