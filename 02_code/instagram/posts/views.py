@@ -37,7 +37,7 @@ class PostDetailView(DetailView, CreateView):
       form.instance.user = self.request.user
       form.instance.post = self.get_object()
       return super(PostDetailView, self).form_valid(form)
-    
+
     def get_success_url(self):
         messages.add_message(self.request, messages.SUCCESS, "Comentario añadido correctamente.")
         return reverse('post_detail', args=[self.get_object().pk])
@@ -59,7 +59,8 @@ def like_post(request, pk):
 def like_post_ajax(request, pk):
     post = Post.objects.get(pk=pk)
     if request.user in post.likes.all():
-        post.likes.remove(request.user)
+        # post.unlike(request.user)
+        request.user.profile.unlike_post(post)
         return JsonResponse(
           {
               'message': 'Ya no te gusta esta publicación.',
@@ -68,7 +69,8 @@ def like_post_ajax(request, pk):
             }
         )
     else:
-        post.likes.add(request.user)
+        # post.like(request.user)
+        request.user.profile.like_post(post)
         return JsonResponse(
           {
               'message': 'Te gusta esta publicación.',

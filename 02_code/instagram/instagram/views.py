@@ -101,7 +101,6 @@ class ProfileDetailView(DetailView, FormView):
         action = form.cleaned_data.get('action')
         following = UserProfile.objects.get(pk=profile_pk)
 
-
         if Follow.objects.filter(
               follower=self.request.user.profile,
               following=following
